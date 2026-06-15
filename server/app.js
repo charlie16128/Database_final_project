@@ -29,7 +29,7 @@ app.use('/api/auth', authRoutes)
 app.use('/api', itemRoutes)
 app.use('/api', commentRoutes)
 app.use('/api/guides', guideRoutes)
-app.use('/api/chats', chatRoutes)
+app.use('/api/chat', chatRoutes)
 
 // Health check
 app.get('/api/health', (_req, res) => {
