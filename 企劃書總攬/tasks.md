@@ -8,12 +8,12 @@
 - [x] 5. 建立 schema.sql 匯入資料表結構
 
 ## 第 2 階段：會員系統
-- [ ] 1. 實作註冊 API
-- [ ] 2. 實作登入 API
-- [ ] 3. 實作 bcrypt hash 密碼功能
-- [ ] 4. 實作 JWT 驗證 middleware
-- [ ] 5. 製作 Vue 登入與註冊頁面 (RegisterView, LoginView)
-- [ ] 6. 設定前端路由守衛 (Route Guards)
+- [x] 1. 實作註冊 API
+- [x] 2. 實作登入 API
+- [x] 3. 實作 bcrypt hash 密碼功能
+- [x] 4. 實作 JWT 驗證 middleware
+- [x] 5. 製作 Vue 登入與註冊頁面 (RegisterView, LoginView)
+- [x] 6. 設定前端路由守衛 (Route Guards)
 
 ## 第 3 階段：商品系統
 - [ ] 1. 建立商品資料表 (items)
