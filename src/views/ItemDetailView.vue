@@ -3,6 +3,7 @@ import { ref, onMounted, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { fetchItem, deleteItem, STATUS_COLOR } from '../services/itemService.js'
 import { getUser, isLoggedIn } from '../services/authService.js'
+import CommentList from '../components/CommentList.vue'
 
 const route  = useRoute()
 const router = useRouter()
@@ -133,6 +134,9 @@ onMounted(loadItem)
         </div>
       </div>
     </div>
+
+    <!-- 留言區（商品載入完成後顯示）-->
+    <CommentList v-if="item" :item-id="item.id" />
   </div>
 </template>
 
