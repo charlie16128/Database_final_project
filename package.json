@@ -1,18 +1,30 @@
 {
-  "name": "package.json",
-  "version": "0.0.0",
+  "name": "pet-circle-platform",
+  "version": "0.1.0",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "server": "node server/app.js",
+    "server:dev": "nodemon server/app.js",
+    "dev:all": "concurrently \"npm run server:dev\" \"npm run dev\""
   },
   "dependencies": {
-    "vue": "^3.5.32"
+    "bcrypt": "^6.0.0",
+    "better-sqlite3": "^12.10.1",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "multer": "^2.1.1",
+    "vue": "^3.5.32",
+    "vue-router": "^4.6.4"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.6",
+    "concurrently": "^10.0.3",
+    "nodemon": "^3.1.14",
     "vite": "^8.0.8",
     "vite-plugin-vue-devtools": "^8.1.1"
   },
