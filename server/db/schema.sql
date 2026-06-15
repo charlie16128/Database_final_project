@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS guides (
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
--- 5. 聊天室資料表 (同一商品+買家+擁有者 唯一一間聊天室)
+-- 5-1 建立聊天室資料表 (chat_rooms 同一商品+買家+擁有者 唯一一間聊天室)
 CREATE TABLE IF NOT EXISTS chat_rooms (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   item_id INTEGER NOT NULL,
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS chat_rooms (
   FOREIGN KEY (owner_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
--- 6. 聊天訊息資料表
+-- 5-2 建立聊天訊息資料表 (chat_messages)
 CREATE TABLE IF NOT EXISTS chat_messages (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   room_id INTEGER NOT NULL,
