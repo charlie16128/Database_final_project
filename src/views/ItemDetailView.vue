@@ -44,10 +44,49 @@ async function handleDelete() {
   }
 }
 
-function handleContact() {
+// 修正後的聯絡擁有者點擊事件（完全相容你的按鈕 handleContact 綁定）
+async function handleContact() {
   if (!loggedIn) { router.push('/login'); return }
-  // 第 5 階段 實作聊天室跳轉
-  router.push({ path: '/messages', query: { item_id: item.value.id } })
+  
+  // 安全檢查：確保 item 與擁有者資料存在
+  if (!item.value) return;
+  const sellerId = item.value.user_id; // 對應後端需要的 owner_id
+  
+  if (!sellerId) {
+    alert('無法獲取該物品的擁有者資訊');
+    return;
+  }
+
+  try {
+    const token = localStorage.getItem('token');
+    
+    // 向後端 POST 發送建立或獲取聊天室的請求
+    const response = await fetch('http://localhost:3000/api/chat', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        item_id: item.value.id,
+        owner_id: sellerId
+      })
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.error || '無法建立聊天室');
+    }
+
+    const room = await response.json();
+    
+    // 成功拿到 room.id 後，直接跳轉到對應的聊天室頁面
+    router.push(`/messages/${room.id}`);
+
+  } catch (e) {
+    console.error('建立聊天室失敗:', e);
+    alert(e.message);
+  }
 }
 
 onMounted(loadItem)
