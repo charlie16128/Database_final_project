@@ -43,7 +43,7 @@ const router = useRouter();
 
 // 點擊聊天室時，跳轉到對應的聊天室內頁 (ChatRoomView)
 const selectRoom = (roomId) => {
-  router.push(`/chat/${roomId}`);
+  router.push(`/messages/${roomId}`);
 };
 </script>
 
