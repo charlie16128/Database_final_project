@@ -1,11 +1,11 @@
 import express from 'express';
 import db from '../db/database.js';
-import authenticateToken from '../middleware/authMiddleware.js';
+import { authMiddleware } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 
 // 1. 取得當前使用者的所有聊天室列表
-router.get('/', authenticateToken, (req, res) => {
+router.get('/', authMiddleware, (req, res) => {
     const userId = req.user.id;
     try {
     // 找出該使用者參與的所有聊天室，並關聯商品與另一方使用者的資訊
@@ -39,7 +39,7 @@ router.get('/', authenticateToken, (req, res) => {
 });
 
 // 2. 建立或取得特定商品的聊天室 (從商品頁面點擊「聯絡賣家」時觸發)
-router.post('/', authenticateToken, (req, res) => {
+router.post('/', authMiddleware, (req, res) => {
     const { item_id, owner_id } = req.body;
     const buyer_id = req.user.id;
 
@@ -67,7 +67,7 @@ router.post('/', authenticateToken, (req, res) => {
 });
 
 // 3. 取得特定聊天室的歷史訊息
-router.get('/:roomId/messages', authenticateToken, (req, res) => {
+router.get('/:roomId/messages', authMiddleware, (req, res) => {
     const { roomId } = req.params;
 
     try {
@@ -87,7 +87,7 @@ router.get('/:roomId/messages', authenticateToken, (req, res) => {
 });
 
 // 4. 在聊天室內發送新訊息
-router.post('/:roomId/messages', authenticateToken, (req, res) => {
+router.post('/:roomId/messages', authMiddleware, (req, res) => {
     const { roomId } = req.params;
     const { message } = req.body;
     const senderId = req.user.id;
