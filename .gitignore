@@ -58,3 +58,9 @@ server/uploads/
 Thumbs.db
 ehthumbs.db
 Desktop.ini
+
+# Local Database
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+*.db
