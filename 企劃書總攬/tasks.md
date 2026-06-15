@@ -16,12 +16,12 @@
 - [x] 6. 設定前端路由守衛 (Route Guards)
 
 ## 第 3 階段：商品系統
-- [ ] 1. 建立商品資料表 (items)
-- [ ] 2. 實作商品 API CRUD 功能
-- [ ] 3. 實作 multer 圖片上傳功能至 `server/uploads`
-- [ ] 4. 製作商品列表頁 (ItemListView) 及商品卡片元件 (ItemCard)
-- [ ] 5. 製作商品詳細頁 (ItemDetailView)
-- [ ] 6. 製作新增與修改商品頁 (ItemCreateView, ItemEditView)
+- [x] 1. 建立商品資料表 (items)
+- [x] 2. 實作商品 API CRUD 功能
+- [x] 3. 實作 multer 圖片上傳功能至 `server/uploads`
+- [x] 4. 製作商品列表頁 (ItemListView) 及商品卡片元件 (ItemCard)
+- [x] 5. 製作商品詳細頁 (ItemDetailView)
+- [x] 6. 製作新增與修改商品頁 (ItemCreateView, ItemEditView)
 
 ## 第 4 階段：留言系統
 - [ ] 1. 建立商品留言資料表 (item_comments)
