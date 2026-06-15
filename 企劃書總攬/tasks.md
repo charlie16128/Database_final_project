@@ -30,12 +30,12 @@
 - [x] 4. 實作刪除自己留言的功能驗證
 
 ## 第 5 階段：私訊聊天室
-- [ ] 1. 建立聊天室資料表 (chat_rooms)
-- [ ] 2. 建立聊天訊息資料表 (chat_messages)
-- [ ] 3. 實作建立/取得聊天室 API 及訊息 API
-- [ ] 4. 製作私訊列表頁 (MessagesView) 及列表元件 (ChatList)
-- [ ] 5. 製作聊天室頁 (ChatRoomView) 及視窗元件 (ChatWindow)
-- [ ] 6. 實作傳送與顯示訊息功能
+- [x] 1. 建立聊天室資料表 (chat_rooms)
+- [x] 2. 建立聊天訊息資料表 (chat_messages)
+- [x] 3. 實作建立/取得聊天室 API 及訊息 API
+- [x] 4. 製作私訊列表頁 (MessagesView) 及列表元件 (ChatList)
+- [x] 5. 製作聊天室頁 (ChatRoomView) 及視窗元件 (ChatWindow)
+- [x] 6. 實作傳送與顯示訊息功能
 
 ## 第 6 階段：永續指南
 - [ ] 1. 建立指南資料表 (guides)
