@@ -12,6 +12,7 @@ const item    = ref(null)
 const loading = ref(true)
 const error   = ref('')
 const deleting = ref(false)
+const toastMessage = ref('')
 
 const currentUser = getUser()
 const loggedIn    = isLoggedIn()
@@ -19,6 +20,11 @@ const loggedIn    = isLoggedIn()
 const isOwner = computed(() =>
   currentUser && item.value && item.value.user_id === currentUser.id
 )
+
+function showToast(msg) {
+  toastMessage.value = msg
+  setTimeout(() => { toastMessage.value = '' }, 3000)
+}
 
 async function loadItem() {
   loading.value = true
@@ -39,7 +45,7 @@ async function handleDelete() {
     await deleteItem(item.value.id)
     router.push('/my-items')
   } catch (e) {
-    alert(e.message)
+    showToast(e.message)
     deleting.value = false
   }
 }
@@ -53,7 +59,7 @@ async function handleContact() {
   const sellerId = item.value.user_id; // 對應後端需要的 owner_id
   
   if (!sellerId) {
-    alert('無法獲取該物品的擁有者資訊');
+    showToast('無法獲取該物品的擁有者資訊');
     return;
   }
 
@@ -85,7 +91,7 @@ async function handleContact() {
 
   } catch (e) {
     console.error('建立聊天室失敗:', e);
-    alert(e.message);
+    showToast(e.message);
   }
 }
 
@@ -176,10 +182,39 @@ onMounted(loadItem)
 
     <!-- 留言區（商品載入完成後顯示）-->
     <CommentList v-if="item" :item-id="item.id" />
+
+    <!-- 浮動提示 Toast -->
+    <Transition name="toast">
+      <div v-if="toastMessage" class="toast-noti">
+        {{ toastMessage }}
+      </div>
+    </Transition>
   </div>
 </template>
 
 <style scoped>
+.toast-noti {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent-color);
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 700;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  z-index: 1000;
+}
+
+.toast-enter-active, .toast-leave-active {
+  transition: all 0.3s ease;
+}
+.toast-enter-from, .toast-leave-to {
+  opacity: 0;
+  transform: translate(-50%, 20px);
+}
+
 /* 麵包屑 */
 .breadcrumb { font-size: 0.9rem; color: var(--text-light); margin-bottom: 2rem; }
 .breadcrumb a { color: var(--primary-color); text-decoration: none; font-weight: 500; }

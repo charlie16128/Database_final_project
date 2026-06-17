@@ -56,88 +56,130 @@ function formatDate(dateStr) {
 
 <style scoped>
 .guide-list-view {
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 2rem 1.5rem;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.header h2 {
+  font-size: 2.2rem;
+  color: var(--primary-dark);
+  font-weight: 800;
 }
 
 .btn-create {
-  background-color: #52b788;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
   color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
+  padding: 0.8rem 1.5rem;
+  border-radius: 12px;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 800;
+  box-shadow: 0 4px 15px rgba(82, 183, 136, 0.2);
+  transition: all 0.2s;
+}
+
+.btn-create:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(82, 183, 136, 0.3);
 }
 
 .guide-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
 }
 
 .guide-card {
   background: white;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
   display: flex;
   flex-direction: column;
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.guide-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary-color);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.06);
 }
 
 .guide-tag {
   display: inline-block;
-  background: #f1f8f5;
-  color: #52b788;
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-size: 0.8rem;
+  background: var(--bg-color);
+  color: var(--primary-color);
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
   align-self: flex-start;
-  margin-bottom: 10px;
+  margin-bottom: 1.25rem;
+  border: 1px solid var(--border-color);
 }
 
 .guide-card h3 {
-  margin: 0 0 10px 0;
-  font-size: 1.25rem;
+  margin: 0 0 0.75rem 0;
+  font-size: 1.35rem;
+  color: var(--primary-dark);
+  font-weight: 800;
+  line-height: 1.3;
 }
 
 .summary {
-  color: #666;
-  font-size: 0.95rem;
-  line-height: 1.5;
+  color: var(--text-main);
+  font-size: 1rem;
+  line-height: 1.6;
   flex-grow: 1;
-  margin-bottom: 20px;
+  margin-bottom: 1.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .guide-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid #eee;
-  padding-top: 15px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 1.25rem;
 }
 
 .date {
-  color: #999;
-  font-size: 0.85rem;
+  color: var(--text-light);
+  font-size: 0.88rem;
+  font-weight: 500;
 }
 
 .btn-more {
-  color: #52b788;
+  color: var(--primary-color);
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
 }
+.btn-more:after { content: " ➔"; }
+.btn-more:hover { color: var(--primary-dark); }
 
 .loading, .no-data {
   text-align: center;
-  padding: 50px;
-  color: #999;
+  padding: 8rem 2rem;
+  background: white;
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  color: var(--text-light);
+  font-size: 1.1rem;
 }
 </style>

@@ -1,20 +1,25 @@
 <template>
   <div class="messages-container">
-    <h2>📥 我的私訊聊天室</h2>
+    <div class="page-header">
+      <h2 class="page-title">📥 我的私訊</h2>
+      <p class="page-sub">與刊登者及買家的溝通紀錄</p>
+    </div>
     
-    <div v-if="loading" class="status-message">
-      <div class="spinner"></div> 正在載入聊天室...
+    <div v-if="loading" class="state-box">
+      <div class="loader"></div> 
+      <p>正在載入聊天室...</p>
     </div>
 
-    <div v-else-if="error" class="status-message error">
-      ⚠️ {{ error }}
+    <div v-else-if="error" class="state-box error">
+      <p>⚠️ {{ error }}</p>
     </div>
 
     <ChatList v-else-if="rooms.length > 0" :rooms="rooms" />
 
-    <div v-else class="status-message empty">
-      <p>目前沒有任何對話紀錄。</p>
-      <p class="sub-text">可以到商品頁面點擊「聯絡賣家」發起對話！</p>
+    <div v-else class="state-box empty">
+      <p class="main-text">目前沒有任何對話紀錄</p>
+      <p class="sub-text">可以到商品頁面點擊「聯絡擁有者」發起對話！</p>
+      <router-link to="/items" class="btn-browse">去逛逛商品</router-link>
     </div>
   </div>
 </template>
@@ -62,52 +67,85 @@ onMounted(async () => {
 
 <style scoped>
 .messages-container {
-  max-width: 600px;
-  margin: 30px auto;
-  padding: 0 20px;
+  max-width: 800px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
 }
 
-h2 {
-  color: #2c3e50;
-  margin-bottom: 24px;
-  font-weight: 600;
-}
-
-.status-message {
+.page-header {
+  margin-bottom: 2.5rem;
   text-align: center;
-  padding: 40px;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  color: #7f8c8d;
 }
 
-.error {
-  color: #e74c3c;
-  background-color: #fde8e8;
+.page-title {
+  font-size: 2.2rem;
+  color: var(--primary-dark);
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+}
+
+.page-sub {
+  color: var(--text-light);
+  font-size: 1.1rem;
+}
+
+.state-box {
+  text-align: center;
+  padding: 5rem 2rem;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+  color: var(--text-light);
+  border: 1px solid var(--border-color);
+}
+
+.state-box.error {
+  color: var(--accent-color);
+  background: #fff8f8;
+}
+
+.empty .main-text {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
 }
 
 .empty .sub-text {
-  font-size: 0.9rem;
-  color: #bdc3c7;
-  margin-top: 8px;
+  font-size: 1rem;
+  color: var(--text-light);
+  margin-bottom: 2rem;
 }
 
-/* 簡易載入動畫 */
-.spinner {
-  border: 4px solid #f3f3f3;
-  border-top: 4px solid #42b983;
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  animation: spin 1s linear infinite;
+.btn-browse {
   display: inline-block;
-  vertical-align: middle;
-  margin-right: 8px;
+  padding: 0.8rem 2rem;
+  background: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: 700;
+  transition: all 0.2s;
+}
+.btn-browse:hover { background: var(--primary-dark); transform: translateY(-2px); }
+
+.loader {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid var(--primary-color);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1.5rem;
 }
 
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 600px) {
+  .page-title { font-size: 1.8rem; }
+  .messages-container { margin: 1.5rem auto; }
 }
 </style>

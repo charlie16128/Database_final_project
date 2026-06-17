@@ -67,27 +67,64 @@ onMounted(loadItem)
 </template>
 
 <style scoped>
-.form-page { display: flex; justify-content: center; padding: 1rem 0; }
+.form-page { 
+  display: flex; 
+  justify-content: center; 
+  padding: 3rem 1.5rem; 
+  background: var(--bg-color);
+  min-height: calc(100vh - 80px);
+}
+
 .form-card {
   background: #fff;
-  border-radius: 1.25rem;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-  padding: 2rem 2rem 2.5rem;
-  width: 100%; max-width: 560px;
+  border-radius: 24px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+  padding: 2.5rem;
+  width: 100%; 
+  max-width: 600px;
+  border: 1px solid var(--border-color);
 }
-.form-title { font-size: 1.5rem; font-weight: 800; color: #2d6a4f; margin-bottom: 1.5rem; }
+
+.form-title { 
+  font-size: 2rem; 
+  font-weight: 800; 
+  color: var(--primary-dark); 
+  margin-bottom: 2.5rem; 
+}
+
 .global-error {
-  background: #fff0f0; color: #e63946;
-  border: 1px solid #ffc0c4; border-radius: 0.5rem;
-  padding: 0.6rem 0.9rem; font-size: 0.87rem; margin-bottom: 1rem;
+  background: #fff8f8; 
+  color: var(--accent-color);
+  border: 1px solid #ffeded; 
+  border-radius: 12px;
+  padding: 1rem; 
+  font-size: 0.95rem; 
+  margin-bottom: 1.5rem;
+  font-weight: 600;
 }
+
 .state-box {
-  display: flex; justify-content: center; padding: 3rem;
+  display: flex; 
+  justify-content: center; 
+  padding: 5rem;
 }
+
 .loader {
-  width: 36px; height: 36px;
-  border: 3px solid #e8f5ee; border-top-color: #52b788;
-  border-radius: 50%; animation: spin 0.8s linear infinite;
+  width: 40px; 
+  height: 40px;
+  border: 4px solid var(--bg-color); 
+  border-top-color: var(--primary-color);
+  border-radius: 50%; 
+  animation: spin 0.8s linear infinite;
 }
-@keyframes spin { to { transform: rotate(360deg); } }
+
+@keyframes spin { 
+  to { transform: rotate(360deg); } 
+}
+
+@media (max-width: 600px) {
+  .form-page { padding: 1.5rem 1rem; }
+  .form-card { padding: 1.5rem; }
+  .form-title { font-size: 1.7rem; margin-bottom: 1.5rem; }
+}
 </style>

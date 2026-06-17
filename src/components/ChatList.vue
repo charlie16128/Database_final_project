@@ -51,35 +51,37 @@ const selectRoom = (roomId) => {
 .chat-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 1rem;
 }
 
 .chat-item {
   display: flex;
   align-items: center;
-  padding: 16px;
+  padding: 1.25rem;
   background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
   cursor: pointer;
-  transition: all 0.2s ease;
-  border: 1px solid #f0f0f0;
+  transition: all 0.25s ease;
+  border: 1px solid var(--border-color);
 }
 
 .chat-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border-color: #42b983;
+  transform: translateX(5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  border-color: var(--primary-color);
+  background: var(--bg-color);
 }
 
 .item-image-container {
-  width: 50px;
-  height: 50px;
-  border-radius: 8px;
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
   overflow: hidden;
-  margin-right: 16px;
-  background-color: #f7f7f7;
+  margin-right: 1.25rem;
+  background-color: #fdfdfd;
   flex-shrink: 0;
+  border: 1px solid var(--border-color);
 }
 
 .item-img {
@@ -92,36 +94,39 @@ const selectRoom = (roomId) => {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 0.5rem;
 }
 
 .other-user {
-  font-weight: 600;
-  color: #2c3e50;
-  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--primary-dark);
+  font-size: 1.15rem;
 }
 
 .item-title {
-  font-size: 0.9rem;
-  color: #7f8c8d;
-  white-space: nowrap;
+  font-size: 0.95rem;
+  color: var(--text-main);
+  /* 限制字數 */
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
   overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 250px;
 }
 
 .tag {
-  background-color: #e8f5e9;
-  color: #2e7d32;
-  padding: 2px 6px;
-  border-radius: 4px;
+  background-color: var(--secondary-color);
+  color: white;
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
   font-size: 0.75rem;
-  font-weight: bold;
+  font-weight: 700;
+  margin-right: 0.4rem;
 }
 
 .arrow {
-  color: #bdc3c7;
+  color: var(--text-light);
   font-size: 1.2rem;
-  padding-left: 8px;
+  padding-left: 1rem;
+  opacity: 0.5;
 }
 </style>

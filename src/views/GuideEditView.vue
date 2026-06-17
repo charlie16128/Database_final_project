@@ -92,15 +92,24 @@ async function handleSubmit() {
 <style scoped>
 .guide-edit-view {
   max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+}
+
+.guide-edit-view h2 {
+  font-size: 2.2rem;
+  color: var(--primary-dark);
+  font-weight: 800;
+  margin-bottom: 2rem;
+  text-align: center;
 }
 
 .guide-form {
   background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 2.5rem;
+  border-radius: 24px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+  border: 1px solid var(--border-color);
 }
 
 .form-group {
@@ -109,43 +118,89 @@ async function handleSubmit() {
 
 .form-group label {
   display: block;
-  margin-bottom: 0.5rem;
-  font-weight: bold;
+  margin-bottom: 0.6rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  font-size: 1rem;
 }
 
 .form-group input,
 .form-group select,
 .form-group textarea {
   width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  padding: 0.8rem 1.1rem;
+  border: 1.5px solid var(--border-color);
+  border-radius: 12px;
   font-size: 1rem;
+  background: var(--bg-color);
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--primary-color);
+  background: white;
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(82, 183, 136, 0.1);
 }
 
 .actions {
   display: flex;
   gap: 1rem;
   justify-content: flex-end;
-  margin-top: 2rem;
+  margin-top: 2.5rem;
 }
 
 .btn-cancel {
-  padding: 0.75rem 1.5rem;
-  background: #eee;
-  border: none;
-  border-radius: 4px;
+  padding: 0.8rem 1.5rem;
+  background: white;
+  border: 1.5px solid var(--border-color);
+  border-radius: 12px;
   cursor: pointer;
+  font-weight: 700;
+  color: var(--text-light);
+  transition: all 0.2s;
+}
+
+.btn-cancel:hover {
+  background: var(--bg-color);
+  color: var(--text-main);
 }
 
 .btn-submit {
-  padding: 0.75rem 2rem;
-  background: #52b788;
+  padding: 0.8rem 2.5rem;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 12px;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 800;
+  box-shadow: 0 4px 15px rgba(82, 183, 136, 0.2);
+  transition: all 0.2s;
+}
+
+.btn-submit:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(82, 183, 136, 0.3);
+}
+
+.btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.loading {
+  text-align: center;
+  padding: 5rem;
+  color: var(--text-light);
+}
+
+@media (max-width: 600px) {
+  .guide-form { padding: 1.5rem; }
+  .actions { flex-direction: column-reverse; }
+  .btn-submit, .btn-cancel { width: 100%; }
 }
 
 .btn-submit:disabled {

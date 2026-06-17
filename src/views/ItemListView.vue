@@ -217,8 +217,6 @@ onMounted(loadItems)
     align-items: stretch;
   }
 }
-</style>
-
 /* States */
 .state-box {
   text-align: center;

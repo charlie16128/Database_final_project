@@ -75,29 +75,40 @@ const formatTime = (timeStr) => {
 .chat-window {
   display: flex;
   flex-direction: column;
-  height: 500px;
+  height: 600px;
   background: #ffffff;
-  border-radius: 12px;
-  border: 1px solid #e8f5ee;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
   overflow: hidden;
 }
 
 .messages-display {
   flex-grow: 1;
-  padding: 20px;
+  padding: 1.5rem;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  background-color: #fcfdfe;
+  gap: 1.25rem;
+  background-color: var(--bg-color);
+  /* 捲軸美化 */
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-color) transparent;
+}
+
+.messages-display::-webkit-scrollbar {
+  width: 6px;
+}
+.messages-display::-webkit-scrollbar-thumb {
+  background-color: var(--border-color);
+  border-radius: 10px;
 }
 
 .message-wrapper {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  max-width: 75%;
+  max-width: 80%;
 }
 
 /* 如果是當前使用者發送的訊息，靠右對齊 */
@@ -108,14 +119,16 @@ const formatTime = (timeStr) => {
 
 .sender-name {
   font-size: 0.8rem;
-  color: #888;
-  margin-bottom: 4px;
+  color: var(--text-light);
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+  padding: 0 0.5rem;
 }
 
 .message-row {
   display: flex;
   align-items: flex-end;
-  gap: 8px;
+  gap: 0.6rem;
 }
 
 .message-wrapper.is-me .message-row {
@@ -123,59 +136,81 @@ const formatTime = (timeStr) => {
 }
 
 .message-bubble {
-  padding: 10px 14px;
-  border-radius: 16px;
-  font-size: 0.95rem;
-  line-height: 1.4;
+  padding: 0.8rem 1.2rem;
+  border-radius: 18px;
+  font-size: 1rem;
+  line-height: 1.5;
   word-break: break-all;
-  background-color: #f1f3f5;
-  color: #333;
+  background-color: white;
+  color: var(--text-main);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+  border: 1px solid var(--border-color);
 }
 
 /* 我發送的訊息顏色 */
 .message-wrapper.is-me .message-bubble {
-  background: linear-gradient(135deg, #52b788, #40916c);
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
   color: #ffffff;
+  border: none;
+  box-shadow: 0 4px 12px rgba(82, 183, 136, 0.2);
 }
 
 .message-time {
   font-size: 0.75rem;
-  color: #bbb;
+  color: var(--text-light);
   white-space: nowrap;
 }
 
 /* 輸入框區域 */
 .message-input-area {
   display: flex;
-  padding: 16px;
+  padding: 1.25rem;
   background: #ffffff;
-  border-top: 1px solid #e8f5ee;
-  gap: 12px;
+  border-top: 1px solid var(--border-color);
+  gap: 1rem;
 }
 
 .message-input-area input {
   flex-grow: 1;
-  padding: 10px 16px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  padding: 0.8rem 1.25rem;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
   outline: none;
-  font-size: 0.95rem;
-  transition: border-color 0.2s;
+  font-size: 1rem;
+  transition: all 0.2s;
+  background: var(--bg-color);
 }
 
 .message-input-area input:focus {
-  border-color: #40916c;
+  border-color: var(--primary-color);
+  background: white;
+  box-shadow: 0 0 0 4px rgba(82, 183, 136, 0.1);
 }
 
 .message-input-area button {
-  padding: 0 20px;
-  background: #40916c;
+  padding: 0 1.5rem;
+  background: var(--primary-color);
   color: #fff;
   border: none;
-  border-radius: 8px;
-  font-weight: 600;
+  border-radius: 12px;
+  font-weight: 700;
   cursor: pointer;
-  transition: opacity 0.2s;
+  transition: all 0.2s;
+}
+
+.message-input-area button:hover:not(:disabled) {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.message-input-area button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+  .chat-window { height: 500px; }
+  .message-wrapper { max-width: 90%; }
 }
 
 .message-input-area button:hover {

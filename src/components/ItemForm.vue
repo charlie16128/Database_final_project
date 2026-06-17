@@ -139,78 +139,158 @@ function handleSubmit() {
 </template>
 
 <style scoped>
-.item-form { display: flex; flex-direction: column; gap: 1.1rem; }
+.item-form { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 1.25rem; 
+}
 
 .field label {
   display: block;
-  font-size: 0.85rem; font-weight: 600; color: #555;
-  margin-bottom: 0.35rem;
+  font-size: 0.95rem; 
+  font-weight: 700; 
+  color: var(--primary-dark);
+  margin-bottom: 0.5rem;
 }
-.req { color: #e63946; }
+.req { color: var(--accent-color); }
 
 .field input,
 .field select,
 .field textarea {
   width: 100%;
-  padding: 0.65rem 0.9rem;
-  border: 1.5px solid #ddd;
-  border-radius: 0.6rem;
-  font-size: 0.95rem;
+  padding: 0.8rem 1.1rem;
+  border: 1.5px solid var(--border-color);
+  border-radius: 12px;
+  font-size: 1rem;
   font-family: inherit;
   outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
-  background: #fff;
+  transition: all 0.2s ease;
+  background: var(--bg-color);
+  color: var(--text-main);
 }
+
 .field input:focus,
 .field select:focus,
 .field textarea:focus {
-  border-color: #52b788;
-  box-shadow: 0 0 0 3px rgba(82,183,136,0.15);
+  border-color: var(--primary-color);
+  background: white;
+  box-shadow: 0 0 0 4px rgba(82, 183, 136, 0.1);
 }
+
 .field.error input,
-.field.error select { border-color: #e63946; }
+.field.error select { 
+  border-color: var(--accent-color); 
+  background: #fff8f8;
+}
 
 .field-error {
-  display: block; min-height: 1.1rem;
-  font-size: 0.78rem; color: #e63946; margin-top: 0.25rem;
+  display: block; 
+  min-height: 1.2rem;
+  font-size: 0.85rem; 
+  color: var(--accent-color); 
+  margin-top: 0.4rem;
+  font-weight: 600;
 }
 
-/* Upload */
+/* Upload Area */
 .upload-area {
-  border: 2px dashed #c8e6c9;
-  border-radius: 0.8rem;
+  border: 2px dashed var(--border-color);
+  border-radius: 16px;
   cursor: pointer;
   overflow: hidden;
-  min-height: 160px;
-  display: flex; align-items: center; justify-content: center;
-  background: #f8fdf9;
-  transition: border-color 0.2s;
+  min-height: 200px;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  background: var(--bg-color);
+  transition: all 0.2s ease;
 }
-.upload-area:hover { border-color: #52b788; }
 
-.preview-img { width: 100%; max-height: 260px; object-fit: contain; display: block; }
+.upload-area:hover { 
+  border-color: var(--primary-color); 
+  background: #f0f7f3;
+}
 
-.upload-placeholder { text-align: center; color: #aaa; padding: 2rem; }
-.upload-icon { font-size: 2.5rem; }
-.upload-placeholder p { margin-top: 0.4rem; font-size: 0.9rem; }
-.upload-hint { font-size: 0.75rem !important; color: #ccc; }
+.preview-img { 
+  width: 100%; 
+  max-height: 300px; 
+  object-fit: contain; 
+  display: block; 
+}
 
-/* Submit */
+.upload-placeholder { 
+  text-align: center; 
+  color: var(--text-light); 
+  padding: 2rem; 
+}
+
+.upload-icon { 
+  font-size: 3rem; 
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.upload-placeholder p { 
+  margin: 0.25rem 0; 
+  font-size: 1rem; 
+  font-weight: 600;
+}
+
+.upload-hint { 
+  font-size: 0.8rem !important; 
+  color: #999; 
+  font-weight: 400;
+}
+
+/* Submit Button */
 .btn-submit {
-  padding: 0.8rem;
-  background: linear-gradient(135deg, #52b788, #40916c);
-  color: #fff; font-size: 1rem; font-weight: 700;
-  border: none; border-radius: 0.75rem; cursor: pointer;
-  display: flex; align-items: center; justify-content: center; gap: 0.5rem;
-  transition: opacity 0.2s, transform 0.1s;
+  margin-top: 1rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  color: #fff; 
+  font-size: 1.1rem; 
+  font-weight: 800;
+  border: none; 
+  border-radius: 14px; 
+  cursor: pointer;
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  gap: 0.6rem;
+  box-shadow: 0 4px 15px rgba(82, 183, 136, 0.3);
+  transition: all 0.3s ease;
 }
-.btn-submit:hover:not(:disabled) { opacity: 0.9; transform: translateY(-1px); }
-.btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.btn-submit:hover:not(:disabled) { 
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(82, 183, 136, 0.4);
+}
+
+.btn-submit:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-submit:disabled { 
+  opacity: 0.6; 
+  cursor: not-allowed; 
+  box-shadow: none;
+}
 
 .spinner {
-  width: 16px; height: 16px;
-  border: 2px solid rgba(255,255,255,0.35); border-top-color: #fff;
-  border-radius: 50%; animation: spin 0.7s linear infinite;
+  width: 18px; 
+  height: 18px;
+  border: 3px solid rgba(255,255,255,0.3); 
+  border-top-color: #fff;
+  border-radius: 50%; 
+  animation: spin 0.8s linear infinite;
 }
-@keyframes spin { to { transform: rotate(360deg); } }
+
+@keyframes spin { 
+  to { transform: rotate(360deg); } 
+}
+
+@media (max-width: 600px) {
+  .upload-area { min-height: 160px; }
+  .btn-submit { font-size: 1rem; }
+}
 </style>

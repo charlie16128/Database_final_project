@@ -104,83 +104,171 @@ onMounted(loadItems)
 
 <style scoped>
 .page-header {
-  display: flex; align-items: center; justify-content: space-between;
-  margin-bottom: 1.5rem; flex-wrap: wrap; gap: 0.75rem;
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between;
+  margin-bottom: 2rem; 
+  flex-wrap: wrap; 
+  gap: 1rem;
 }
-.page-title { font-size: 1.7rem; font-weight: 800; color: #2d6a4f; }
+
+.page-title { 
+  font-size: 2.2rem; 
+  font-weight: 800; 
+  color: var(--primary-dark); 
+}
 
 .btn-new {
-  padding: 0.55rem 1.1rem;
-  background: linear-gradient(135deg, #52b788, #40916c);
-  color: #fff; font-weight: 700; font-size: 0.9rem;
-  border-radius: 0.6rem; text-decoration: none;
-  transition: opacity 0.2s;
+  padding: 0.8rem 1.5rem;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  color: #fff; 
+  font-weight: 800; 
+  font-size: 1rem;
+  border-radius: 12px; 
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(82, 183, 136, 0.2);
+  transition: all 0.2s ease;
 }
-.btn-new:hover { opacity: 0.88; }
+
+.btn-new:hover { 
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(82, 183, 136, 0.3);
+}
 
 /* List */
-.my-items-list { display: flex; flex-direction: column; gap: 0.75rem; }
+.my-items-list { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 1rem; 
+}
 
 .my-item-row {
-  display: flex; align-items: center; gap: 1rem;
+  display: flex; 
+  align-items: center; 
+  gap: 1.5rem;
   background: #fff;
-  border-radius: 0.9rem;
-  padding: 0.75rem 1rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-  flex-wrap: wrap;
+  border-radius: 20px;
+  padding: 1.25rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.my-item-row:hover {
+  border-color: var(--primary-color);
+  transform: translateX(5px);
 }
 
 .row-thumb {
-  width: 60px; height: 60px;
-  border-radius: 0.6rem; overflow: hidden;
-  background: #f0f4f1;
-  display: flex; align-items: center; justify-content: center;
+  width: 80px; 
+  height: 80px;
+  border-radius: 12px; 
+  overflow: hidden;
+  background: var(--bg-color);
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
   flex-shrink: 0;
+  border: 1px solid var(--border-color);
 }
-.row-thumb img { width: 100%; height: 100%; object-fit: cover; }
-.row-thumb span { font-size: 1.8rem; }
 
-.row-info { flex: 1; min-width: 120px; }
-.row-title { font-weight: 700; font-size: 0.98rem; color: #222; }
-.row-meta  { font-size: 0.78rem; color: #aaa; margin-top: 0.2rem; }
+.row-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.row-thumb span { font-size: 2rem; }
+
+.row-info { flex: 1; min-width: 151px; }
+.row-title { font-weight: 800; font-size: 1.15rem; color: var(--primary-dark); }
+.row-meta  { font-size: 0.9rem; color: var(--text-light); margin-top: 0.4rem; font-weight: 500; }
 
 .status-select {
-  padding: 0.35rem 0.6rem;
-  border: 1.5px solid #ddd; border-radius: 0.5rem;
-  font-weight: 600; font-size: 0.85rem;
-  background: #fff; cursor: pointer; outline: none;
+  padding: 0.5rem 0.8rem;
+  border: 1.5px solid var(--border-color); 
+  border-radius: 10px;
+  font-weight: 700; 
+  font-size: 0.95rem;
+  background: white; 
+  cursor: pointer; 
+  outline: none;
+  transition: all 0.2s;
 }
 
-.row-actions { display: flex; gap: 0.5rem; }
+.status-select:focus {
+  border-color: var(--primary-color);
+}
+
+.row-actions { display: flex; gap: 0.6rem; }
 
 .btn-sm {
-  padding: 0.35rem 0.75rem;
-  border-radius: 0.5rem; font-size: 0.82rem; font-weight: 600;
-  border: 1.5px solid #ddd; background: #fff; color: #555;
-  text-decoration: none; cursor: pointer; transition: background 0.15s;
+  padding: 0.5rem 1rem;
+  border-radius: 10px; 
+  font-size: 0.9rem; 
+  font-weight: 700;
+  border: 1.5px solid var(--border-color); 
+  background: #fff; 
+  color: var(--text-main);
+  text-decoration: none; 
+  cursor: pointer; 
+  transition: all 0.2s;
 }
-.btn-sm:hover { background: #f5f5f5; }
-.btn-edit  { border-color: #b7e4c7; color: #2d6a4f; }
-.btn-edit:hover { background: #edfaf3; }
-.btn-del   { border-color: #ffc0c4; color: #e63946; }
-.btn-del:hover { background: #fff0f0; }
+
+.btn-sm:hover { 
+  background: var(--bg-color); 
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.btn-edit { border-color: var(--primary-color); color: var(--primary-color); }
+.btn-edit:hover { background: #f0f7f3; }
+
+.btn-del { border-color: #ffeded; color: var(--accent-color); }
+.btn-del:hover { background: #fff8f8; border-color: var(--accent-color); }
 
 /* States */
 .state-box {
-  text-align: center; padding: 4rem 1rem; color: #888;
-  display: flex; flex-direction: column; align-items: center; gap: 0.75rem;
+  text-align: center; 
+  padding: 6rem 2rem; 
+  background: white;
+  border-radius: 24px;
+  border: 1px solid var(--border-color);
+  color: var(--text-light);
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  gap: 1rem;
 }
-.error-box { color: #e63946; }
+
+.error-box { 
+  color: var(--accent-color); 
+  background: #fff8f8;
+}
+
 .loader {
-  width: 36px; height: 36px;
-  border: 3px solid #e8f5ee; border-top-color: #52b788;
-  border-radius: 50%; animation: spin 0.8s linear infinite;
+  width: 40px; 
+  height: 40px;
+  border: 4px solid var(--bg-color); 
+  border-top-color: var(--primary-color);
+  border-radius: 50%; 
+  animation: spin 0.8s linear infinite;
+  margin-bottom: 1rem;
 }
+
 @keyframes spin { to { transform: rotate(360deg); } }
 
 .btn-primary {
-  display: inline-block; padding: 0.6rem 1.3rem;
-  background: linear-gradient(135deg, #52b788, #40916c);
-  color: #fff; font-weight: 600; border-radius: 0.6rem; text-decoration: none;
+  display: inline-block; 
+  padding: 0.8rem 2rem;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  color: #fff; 
+  font-weight: 700; 
+  border-radius: 12px; 
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(82, 183, 136, 0.2);
+}
+
+@media (max-width: 768px) {
+  .page-title { font-size: 1.8rem; }
+  .my-item-row { flex-direction: column; align-items: stretch; text-align: center; gap: 1rem; }
+  .row-thumb { margin: 0 auto; width: 100px; height: 100px; }
+  .row-actions { justify-content: center; }
+  .status-select { width: 100%; }
 }
 </style>

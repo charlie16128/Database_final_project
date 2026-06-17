@@ -133,121 +133,135 @@ async function handleSubmit() {
 
 <style scoped>
 .auth-page {
-  min-height: 100vh;
+  min-height: calc(100vh - 120px);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #f0faf4 0%, #fdf6ec 100%);
-  padding: 1.5rem;
+  background: var(--bg-color);
+  padding: 2rem;
 }
 
 .auth-card {
   background: #fff;
-  border-radius: 1.5rem;
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.10);
-  padding: 2.5rem 2rem;
+  border-radius: 24px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+  padding: 3.5rem 2.5rem;
   width: 100%;
-  max-width: 420px;
+  max-width: 460px;
   text-align: center;
+  border: 1px solid var(--border-color);
 }
 
-.auth-logo { font-size: 2.8rem; margin-bottom: 0.5rem; }
+.auth-logo { font-size: 4rem; margin-bottom: 1.25rem; }
 
 .auth-title {
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: #2d6a4f;
-  margin-bottom: 0.25rem;
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--primary-dark);
+  margin-bottom: 0.5rem;
 }
 
-.auth-sub { color: #888; margin-bottom: 1.8rem; font-size: 0.9rem; }
+.auth-sub { color: var(--text-light); margin-bottom: 2.5rem; font-size: 1.05rem; }
 
 /* Fields */
 .field {
   text-align: left;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .field label {
   display: block;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #555;
-  margin-bottom: 0.35rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 0.6rem;
 }
 
 .field input {
   width: 100%;
-  padding: 0.65rem 0.9rem;
-  border: 1.5px solid #ddd;
-  border-radius: 0.6rem;
-  font-size: 0.95rem;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  padding: 0.9rem 1.1rem;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  font-size: 1.05rem;
+  transition: all 0.2s;
   outline: none;
+  color: var(--text-main);
 }
 
 .field input:focus {
-  border-color: #52b788;
-  box-shadow: 0 0 0 3px rgba(82, 183, 136, 0.18);
+  border-color: var(--primary-color);
+  background: #fdfdfd;
+  box-shadow: 0 0 0 4px rgba(82, 183, 136, 0.1);
 }
 
 .field.error input {
-  border-color: #e63946;
+  border-color: var(--accent-color);
 }
 
 .field-error {
   display: block;
-  min-height: 1.1rem;
-  font-size: 0.78rem;
-  color: #e63946;
-  margin-top: 0.25rem;
+  min-height: 1.2rem;
+  font-size: 0.82rem;
+  color: var(--accent-color);
+  margin-top: 0.5rem;
+  font-weight: 600;
 }
 
 /* Button */
 .btn-primary {
   width: 100%;
-  padding: 0.75rem;
-  margin-top: 0.5rem;
-  background: linear-gradient(135deg, #52b788, #40916c);
+  padding: 1.1rem;
+  margin-top: 1rem;
+  background: var(--primary-color);
   color: #fff;
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 1.15rem;
+  font-weight: 700;
   border: none;
-  border-radius: 0.75rem;
+  border-radius: 14px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  transition: opacity 0.2s, transform 0.1s;
+  gap: 0.75rem;
+  transition: all 0.2s;
 }
-.btn-primary:hover:not(:disabled) { opacity: 0.92; transform: translateY(-1px); }
-.btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+.btn-primary:hover:not(:disabled) { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(82, 183, 136, 0.3); }
+.btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
 
 /* Spinner */
 .spinner {
-  width: 16px; height: 16px;
-  border: 2px solid rgba(255,255,255,0.4);
+  width: 20px; height: 20px;
+  border: 3px solid rgba(255,255,255,0.3);
   border-top-color: #fff;
   border-radius: 50%;
-  animation: spin 0.7s linear infinite;
+  animation: spin 0.8s linear infinite;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 
 /* Error banner */
 .global-error {
-  background: #fff0f0;
-  color: #e63946;
-  border: 1px solid #ffc0c4;
-  border-radius: 0.5rem;
-  padding: 0.6rem 0.9rem;
-  font-size: 0.87rem;
-  text-align: left;
-  margin-bottom: 0.75rem;
+  background: #fff8f8;
+  color: var(--accent-color);
+  border: 1px solid #ffeded;
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+  font-size: 0.9rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
 }
 
 /* Footer */
-.auth-footer { margin-top: 1.5rem; font-size: 0.88rem; color: #777; }
-.auth-footer a { color: #40916c; font-weight: 600; text-decoration: none; }
+.auth-footer { 
+  margin-top: 2.5rem; 
+  font-size: 1rem; 
+  color: var(--text-light); 
+}
+.auth-footer a { 
+  color: var(--primary-color); 
+  font-weight: 700; 
+  text-decoration: none; 
+  margin-left: 0.5rem;
+}
 .auth-footer a:hover { text-decoration: underline; }
 </style>

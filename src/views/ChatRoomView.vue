@@ -107,38 +107,50 @@ onUnmounted(() => {
 
 <style scoped>
 .chat-room-container {
-  max-width: 700px;
-  margin: 20px auto;
-  padding: 0 15px;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
 }
 
 .back-bar {
-  margin-bottom: 16px;
+  margin-bottom: 1.5rem;
 }
 
 .btn-back {
-  background: none;
-  border: none;
-  color: #40916c;
-  font-weight: 600;
+  background: white;
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  font-weight: 700;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 0.95rem;
+  padding: 0.6rem 1.25rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  transition: all 0.2s;
 }
 
 .btn-back:hover {
-  text-decoration: underline;
+  background: var(--bg-color);
+  color: var(--primary-color);
+  border-color: var(--primary-color);
 }
 
 .status-box {
   text-align: center;
-  padding: 40px;
+  padding: 5rem 2rem;
   background: #fff;
-  border-radius: 12px;
-  color: #666;
+  border-radius: 20px;
+  color: var(--text-light);
+  border: 1px solid var(--border-color);
 }
 
 .error {
-  color: #e63946;
-  background: #ffe3e3;
+  color: var(--accent-color);
+  background: #fff8f8;
+  border-color: #ffeded;
+}
+
+@media (max-width: 600px) {
+  .chat-room-container { margin: 1rem auto; padding: 0 1rem; }
 }
 </style>

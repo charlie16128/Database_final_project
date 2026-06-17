@@ -68,187 +68,147 @@ function handleLogout() {
 .navbar {
   position: sticky;
   top: 0;
-  z-index: 100;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border-color);
-  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-}
-
-.nav-links a {
-  color: var(--text-main);
-  font-weight: 500;
-  padding: 0.5rem 0.8rem;
-  border-radius: 6px;
-  transition: all 0.2s;
-}
-
-.nav-links a:hover, .nav-links a.router-link-active {
-  color: var(--primary-color);
-  background: var(--bg-color);
-}
-
-.btn-login {
-  color: var(--primary-color) !important;
-}
-
-.btn-register {
-  background: var(--primary-color) !important;
-  color: white !important;
-}
-
-.btn-register:hover {
-  background: var(--primary-dark) !important;
-}
-
-.nav-username {
-  color: var(--primary-dark);
-  font-weight: 600;
-  margin-right: 0.5rem;
-}
-
-.btn-logout {
-  background: #fff0f0;
-  color: #ff4d4f;
-  padding: 0.4rem 0.8rem;
-  border-radius: 6px;
-  font-size: 0.9rem;
-}
-
-.nav-divider {
-  width: 1px;
-  height: 20px;
-  background: var(--border-color);
-  margin: 0 0.5rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.02);
 }
 
 .nav-inner {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1.25rem;
-  height: 62px;
+  padding: 0 1.5rem;
+  height: 70px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
 }
 
 /* Logo */
 .nav-logo {
-  font-size: 1.2rem;
+  font-size: 1.45rem;
   font-weight: 800;
-  color: #2d6a4f;
+  color: var(--primary-dark);
   text-decoration: none;
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-  flex-shrink: 0;
+  gap: 0.6rem;
 }
-.nav-logo span { letter-spacing: -0.01em; }
+.nav-logo span { 
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
 /* Links container */
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 0.25rem;
-  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .nav-links a {
-  padding: 0.4rem 0.75rem;
-  border-radius: 0.5rem;
-  font-size: 0.9rem;
-  color: #444;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  font-size: 1rem;
+  color: var(--text-main);
   text-decoration: none;
-  transition: background 0.15s, color 0.15s;
+  font-weight: 500;
+  transition: all 0.2s;
 }
 .nav-links a:hover,
 .nav-links a.router-link-active {
-  background: #edfaf3;
-  color: #2d6a4f;
-  font-weight: 600;
+  background: var(--bg-color);
+  color: var(--primary-color);
+  font-weight: 700;
 }
 
-.nav-divider { width: 1px; height: 22px; background: #ddd; margin: 0 0.25rem; }
+.nav-divider { width: 1px; height: 24px; background: var(--border-color); margin: 0 0.5rem; }
 
 .nav-username {
-  font-size: 0.85rem;
-  color: #555;
-  padding: 0 0.25rem;
+  font-size: 0.95rem;
+  color: var(--text-main);
+  font-weight: 700;
+  padding: 0 0.5rem;
+  border-bottom: 2px solid var(--secondary-color);
 }
 
 /* Auth buttons */
 .btn-login {
-  padding: 0.4rem 0.9rem !important;
-  border: 1.5px solid #52b788 !important;
-  color: #40916c !important;
-  border-radius: 0.5rem;
-  font-weight: 600 !important;
+  color: var(--primary-color) !important;
+  border: 2px solid var(--primary-color) !important;
 }
-.btn-login:hover { background: #edfaf3 !important; }
+.btn-login:hover { background: var(--bg-color) !important; }
 
 .btn-register {
-  padding: 0.4rem 0.9rem !important;
-  background: linear-gradient(135deg, #52b788, #40916c) !important;
+  background: var(--primary-color) !important;
   color: #fff !important;
-  border-radius: 0.5rem;
-  font-weight: 600 !important;
 }
-.btn-register:hover { opacity: 0.88; }
+.btn-register:hover { background: var(--primary-dark) !important; transform: translateY(-1px); }
 
 .btn-logout {
-  padding: 0.4rem 0.75rem;
-  background: none;
-  border: 1.5px solid #ddd;
-  border-radius: 0.5rem;
-  font-size: 0.87rem;
-  color: #888;
+  padding: 0.5rem 1rem;
+  background: #fff;
+  border: 2px solid #eee;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  font-weight: 600;
   cursor: pointer;
-  transition: border-color 0.15s, color 0.15s;
+  transition: all 0.2s;
 }
-.btn-logout:hover { border-color: #e63946; color: #e63946; }
+.btn-logout:hover { border-color: var(--accent-color); color: var(--accent-color); background: #fff8f8; }
 
 /* Hamburger */
 .hamburger {
   display: none;
   flex-direction: column;
-  gap: 5px;
-  background: none;
+  justify-content: space-around;
+  width: 2rem;
+  height: 2rem;
+  background: transparent;
   border: none;
   cursor: pointer;
-  padding: 0.25rem;
+  padding: 0;
+  z-index: 10;
 }
 .hamburger span {
-  display: block;
-  width: 22px;
-  height: 2px;
-  background: #444;
-  border-radius: 2px;
-  transition: transform 0.25s, opacity 0.2s;
+  width: 2rem;
+  height: 0.25rem;
+  background: var(--primary-dark);
+  border-radius: 10px;
+  transition: all 0.3s linear;
+  position: relative;
+  transform-origin: 1px;
 }
-.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.hamburger.open span:nth-child(2) { opacity: 0; }
-.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.hamburger.open span:nth-child(1) { transform: rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; transform: translateX(20px); }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg); }
 
 /* RWD */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .hamburger { display: flex; }
 
   .nav-links {
     display: none;
-    position: absolute;
-    top: 62px;
-    left: 0; right: 0;
-    background: #fff;
-    border-top: 1px solid #e8f5ee;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 260px;
+    background: white;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.05);
     flex-direction: column;
-    align-items: flex-start;
-    padding: 1rem 1.25rem;
-    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    gap: 1.5rem;
+    transition: all 0.3s ease-in-out;
   }
   .nav-links.open { display: flex; }
   .nav-divider { display: none; }
+  .nav-username { margin-bottom: 1rem; }
 }
 </style>
