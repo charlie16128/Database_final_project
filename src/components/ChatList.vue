@@ -7,11 +7,12 @@
       @click="selectRoom(room.room_id)"
     >
       <div class="item-image-container">
-        <img 
-          :src="room.item_image ? `http://localhost:3000/${room.item_image}` : '/default-item.png'" 
-          alt="商品圖片" 
+        <img
+          :src="getImageUrl(room.item_image)"
+          alt="商品圖片"
           class="item-img"
         />
+
       </div>
 
       <div class="chat-info">
@@ -44,6 +45,22 @@ const router = useRouter();
 // 點擊聊天室時，跳轉到對應的聊天室內頁 (ChatRoomView)
 const selectRoom = (roomId) => {
   router.push(`/messages/${roomId}`);
+};
+
+const getImageUrl = (imagePath) => {
+  if (!imagePath) {
+    return '/default-item.png';
+  }
+
+  if (imagePath.startsWith('http')) {
+    return imagePath;
+  }
+
+  if (imagePath.startsWith('/uploads')) {
+    return `http://localhost:3000${imagePath}`;
+  }
+
+  return `http://localhost:3000/uploads/${imagePath}`;
 };
 </script>
 
