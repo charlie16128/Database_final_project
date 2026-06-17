@@ -43,92 +43,96 @@ const props = defineProps({
 .item-card {
   display: flex;
   flex-direction: column;
-  background: #fff;
-  border-radius: 1.1rem;
+  background: var(--card-bg);
+  border-radius: 1rem;
   overflow: hidden;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   text-decoration: none;
   color: inherit;
-  transition: transform 0.18s, box-shadow 0.18s;
+  transition: transform 0.2s, box-shadow 0.2s;
   cursor: pointer;
+  border: 1px solid var(--border-color);
 }
 .item-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 28px rgba(0,0,0,0.13);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.1);
 }
 
 /* 圖片 */
 .card-img-wrap {
   position: relative;
-  aspect-ratio: 4/3;
-  background: #f0f4f1;
+  aspect-ratio: 1/1;
+  background: #fdfdfd;
   overflow: hidden;
 }
 .card-img {
   width: 100%; height: 100%;
   object-fit: cover;
-  transition: transform 0.3s;
+  transition: transform 0.4s;
 }
-.item-card:hover .card-img { transform: scale(1.04); }
+.item-card:hover .card-img { transform: scale(1.05); }
 
 .card-img-placeholder {
   width: 100%; height: 100%;
   display: flex; align-items: center; justify-content: center;
-  font-size: 3rem; color: #c8e6c9;
+  font-size: 3.5rem; color: var(--secondary-color);
 }
 
 /* Badge */
 .status-badge {
   position: absolute;
-  top: 0.6rem; right: 0.6rem;
-  padding: 0.2rem 0.65rem;
-  border-radius: 999px;
-  font-size: 0.72rem;
+  top: 0.75rem; right: 0.75rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 8px;
+  font-size: 0.75rem;
   font-weight: 700;
   color: #fff;
-  letter-spacing: 0.02em;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 /* Body */
-.card-body { padding: 0.9rem 1rem 0.5rem; flex: 1; }
+.card-body { padding: 1.25rem; flex: 1; }
 
 .card-category {
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  color: #52b788;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 0.3rem;
+  color: var(--primary-color);
+  margin-bottom: 0.4rem;
 }
 
 .card-title {
-  font-size: 1rem;
+  font-size: 1.15rem;
   font-weight: 700;
-  color: #222;
-  margin-bottom: 0.35rem;
-  white-space: nowrap;
+  margin-bottom: 0.6rem;
+  color: var(--text-main);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
   overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .card-condition {
-  font-size: 0.8rem;
-  color: #888;
+  font-size: 0.85rem;
+  color: var(--accent-color);
+  font-weight: 600;
   margin-bottom: 0.4rem;
 }
 
 .card-owner {
-  font-size: 0.8rem;
-  color: #aaa;
+  font-size: 0.85rem;
+  color: var(--text-light);
 }
 
-/* Footer */
 .card-footer {
-  padding: 0.6rem 1rem;
-  border-top: 1px solid #f0f4f1;
-  font-size: 0.82rem;
+  padding: 0.75rem 1.25rem;
+  border-top: 1px solid var(--border-color);
+  font-size: 0.85rem;
   font-weight: 600;
-  color: #40916c;
+  color: var(--primary-color);
   text-align: right;
+  background: #fafafa;
+}
+.item-card:hover .card-footer {
+  background: var(--bg-color);
 }
 </style>

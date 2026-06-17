@@ -48,6 +48,15 @@ export async function register(data) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
   })
+
+  // 如果伺服器報錯且不是 JSON 格式（例如 Proxy 報錯或 HTML 錯誤頁面）
+  const contentType = res.headers.get('content-type')
+  if (!contentType || !contentType.includes('application/json')) {
+    const text = await res.text()
+    console.error('Server error (not JSON):', text)
+    throw new Error(`伺服器回應異常 (${res.status})，請確認後端服務是否正常運算。`)
+  }
+
   const json = await res.json()
   if (!res.ok) throw new Error(json.message || '註冊失敗')
   return json

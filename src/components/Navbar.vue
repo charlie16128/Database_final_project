@@ -69,10 +69,58 @@ function handleLogout() {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid #e8f5ee;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+
+.nav-links a {
+  color: var(--text-main);
+  font-weight: 500;
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.nav-links a:hover, .nav-links a.router-link-active {
+  color: var(--primary-color);
+  background: var(--bg-color);
+}
+
+.btn-login {
+  color: var(--primary-color) !important;
+}
+
+.btn-register {
+  background: var(--primary-color) !important;
+  color: white !important;
+}
+
+.btn-register:hover {
+  background: var(--primary-dark) !important;
+}
+
+.nav-username {
+  color: var(--primary-dark);
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.btn-logout {
+  background: #fff0f0;
+  color: #ff4d4f;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.nav-divider {
+  width: 1px;
+  height: 20px;
+  background: var(--border-color);
+  margin: 0 0.5rem;
 }
 
 .nav-inner {

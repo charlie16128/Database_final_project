@@ -10,6 +10,7 @@ const ItemCreateView = () => import('../views/ItemCreateView.vue')
 const ItemEditView   = () => import('../views/ItemEditView.vue')
 const MyItemsView    = () => import('../views/MyItemsView.vue')
 const GuideListView  = () => import('../views/GuideListView.vue')
+const GuideDetailView = () => import('../views/GuideDetailView.vue')
 const GuideEditView  = () => import('../views/GuideEditView.vue')
 const MessagesView   = () => import('../views/MessagesView.vue')
 const ChatRoomView   = () => import('../views/ChatRoomView.vue')
@@ -24,6 +25,8 @@ const routes = [
   { path: '/items/:id/edit',    component: ItemEditView,   meta: { requiresAuth: true } },
   { path: '/my-items',          component: MyItemsView,    meta: { requiresAuth: true } },
   { path: '/guides',            component: GuideListView },
+  { path: '/guides/create',     component: GuideEditView,  meta: { requiresAuth: true } },
+  { path: '/guides/:id',         component: GuideDetailView },
   { path: '/guides/:id/edit',   component: GuideEditView,  meta: { requiresAuth: true } },
   { path: '/messages',          component: MessagesView,   meta: { requiresAuth: true } },
   { path: '/messages/:roomId',  component: ChatRoomView,   meta: { requiresAuth: true } },

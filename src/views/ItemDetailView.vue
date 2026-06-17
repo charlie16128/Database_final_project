@@ -181,126 +181,140 @@ onMounted(loadItem)
 
 <style scoped>
 /* 麵包屑 */
-.breadcrumb { font-size: 0.85rem; color: #aaa; margin-bottom: 1.25rem; }
-.breadcrumb a { color: #52b788; text-decoration: none; }
+.breadcrumb { font-size: 0.9rem; color: var(--text-light); margin-bottom: 2rem; }
+.breadcrumb a { color: var(--primary-color); text-decoration: none; font-weight: 500; }
 .breadcrumb a:hover { text-decoration: underline; }
 
 /* 佈局 */
 .detail-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 3rem;
   align-items: start;
+  background: white;
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.04);
 }
-@media (max-width: 700px) {
-  .detail-layout { grid-template-columns: 1fr; }
+@media (max-width: 850px) {
+  .detail-layout { grid-template-columns: 1fr; gap: 2rem; padding: 1.5rem; }
 }
 
 /* 圖片 */
 .detail-img-wrap {
-  aspect-ratio: 4/3;
-  border-radius: 1.1rem;
+  position: relative;
+  aspect-ratio: 1/1;
+  background: #fdfdfd;
+  border-radius: 12px;
   overflow: hidden;
-  background: #f0f4f1;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.09);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
 }
-.detail-img { width: 100%; height: 100%; object-fit: cover; }
+.detail-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
 .detail-img-placeholder {
   width: 100%; height: 100%;
   display: flex; align-items: center; justify-content: center;
-  font-size: 5rem; color: #c8e6c9;
+  font-size: 6rem; color: var(--secondary-color);
 }
 
 /* 資訊欄 */
-.info-top { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem; }
+.info-top { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem; }
 
 .status-badge {
-  padding: 0.25rem 0.75rem;
-  border-radius: 999px;
-  font-size: 0.75rem;
+  padding: 0.4rem 1.1rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
   font-weight: 700;
   color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .category-tag {
-  background: #edfaf3;
-  color: #40916c;
-  padding: 0.25rem 0.75rem;
-  border-radius: 999px;
-  font-size: 0.75rem;
+  background: var(--bg-color);
+  color: var(--primary-color);
+  padding: 0.4rem 1.1rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
   font-weight: 600;
+  border: 1px solid var(--border-color);
 }
 
 .detail-title {
-  font-size: 1.65rem;
+  font-size: 2.3rem;
   font-weight: 800;
-  color: #222;
-  margin-bottom: 1rem;
-  line-height: 1.3;
+  color: var(--primary-dark);
+  margin-bottom: 1.75rem;
+  line-height: 1.2;
 }
 
 /* Meta rows */
-.meta-rows { margin-bottom: 1.2rem; display: flex; flex-direction: column; gap: 0.45rem; }
-.meta-row { display: flex; align-items: center; gap: 0.75rem; }
-.meta-label { font-size: 0.82rem; color: #999; width: 72px; flex-shrink: 0; }
-.meta-val { font-size: 0.9rem; color: #444; font-weight: 500; }
+.meta-rows { 
+  margin-bottom: 2rem; 
+  display: flex; 
+  flex-direction: column; 
+  gap: 0.75rem; 
+  padding: 1.5rem;
+  background: #f9f9f9;
+  border-radius: 12px;
+}
+.meta-row { display: flex; align-items: center; gap: 1rem; }
+.meta-label { font-size: 0.95rem; color: var(--text-light); width: 85px; flex-shrink: 0; }
+.meta-val { font-size: 1.1rem; color: var(--text-main); font-weight: 600; }
 
 /* 描述 */
 .detail-desc {
-  background: #f8fdf9;
-  border: 1px solid #d8f0e3;
-  border-radius: 0.75rem;
-  padding: 1rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: 2rem;
 }
-.detail-desc h3 { font-size: 0.85rem; color: #888; font-weight: 600; margin-bottom: 0.5rem; }
-.detail-desc p  { font-size: 0.95rem; color: #444; line-height: 1.65; white-space: pre-wrap; }
+.detail-desc h3 { font-size: 1.15rem; color: var(--text-main); font-weight: 700; margin-bottom: 1rem; border-left: 5px solid var(--primary-color); padding-left: 0.75rem; }
+.detail-desc p  { font-size: 1.1rem; color: var(--text-main); line-height: 1.9; white-space: pre-wrap; }
 
 /* 按鈕 */
-.action-row { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.action-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 3rem; }
 
 .btn-contact {
-  flex: 1;
-  padding: 0.75rem 1.5rem;
-  background: linear-gradient(135deg, #52b788, #40916c);
-  color: #fff; font-size: 1rem; font-weight: 700;
-  border: none; border-radius: 0.75rem; cursor: pointer;
-  transition: opacity 0.2s, transform 0.1s;
+  flex: 2;
+  padding: 1.1rem 2rem;
+  background: var(--primary-color);
+  color: #fff; font-size: 1.15rem; font-weight: 700;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
 }
-.btn-contact:hover:not(:disabled) { opacity: 0.9; transform: translateY(-1px); }
-.btn-contact:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-contact:hover:not(:disabled) { background: var(--primary-dark); transform: translateY(-2px); }
+.btn-contact:disabled { opacity: 0.5; background: #ccc; cursor: not-allowed; }
 
 .btn-edit {
   flex: 1;
-  padding: 0.7rem 1rem;
-  background: #f0faf4;
-  color: #2d6a4f; font-weight: 700;
-  border: 1.5px solid #52b788; border-radius: 0.75rem;
+  padding: 1.1rem;
+  background: white;
+  color: var(--primary-color); font-weight: 700;
+  border: 2px solid var(--primary-color); 
+  border-radius: 12px;
   text-decoration: none; text-align: center;
-  transition: background 0.15s;
+  transition: all 0.2s;
 }
-.btn-edit:hover { background: #e2f5ea; }
+.btn-edit:hover { background: var(--bg-color); }
 
 .btn-delete {
-  padding: 0.7rem 1rem;
-  background: #fff0f0; color: #e63946;
-  border: 1.5px solid #ffc0c4; border-radius: 0.75rem;
-  font-weight: 600; cursor: pointer;
-  transition: background 0.15s;
+  padding: 1.1rem 1.5rem;
+  background: #fffafa; color: var(--accent-color);
+  border: 2px solid #ffeded; border-radius: 12px;
+  font-weight: 700; cursor: pointer;
 }
-.btn-delete:hover:not(:disabled) { background: #ffe0e0; }
-.btn-delete:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-delete:hover:not(:disabled) { background: #ffeded; }
 
 /* States */
 .state-box {
-  text-align: center; padding: 4rem 1rem; color: #888;
-  display: flex; flex-direction: column; align-items: center; gap: 0.75rem;
+  text-align: center; padding: 6rem 1rem; color: var(--text-light);
 }
-.error-box { color: #e63946; }
 .loader {
-  width: 36px; height: 36px;
-  border: 3px solid #e8f5ee; border-top-color: #52b788;
-  border-radius: 50%; animation: spin 0.8s linear infinite;
+  width: 44px; height: 44px;
+  border: 4px solid #f3f3f3; border-top-color: var(--primary-color);
+  border-radius: 50%; animation: spin 1s linear infinite;
+  margin: 0 auto 1.5rem;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 </style>
