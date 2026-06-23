@@ -7,7 +7,7 @@ const router = Router()
 // GET /api/guides - 取得所有指南
 router.get('/', (req, res) => {
   try {
-    const guides = db.prepare('SELECT * FROM guides ORDER BY created_at DESC').all()
+    const guides = db.prepare('SELECT * FROM guides ORDER BY created_at ASC').all()
     res.json(guides)
   } catch (error) {
     res.status(500).json({ message: '取得指南失敗', error: error.message })
