@@ -4,6 +4,16 @@
       <button @click="goBack" class="btn-back">⬅ 返回私訊列表</button>
     </div>
 
+    <!-- 聊天室頂端資訊欄 -->
+    <div v-if="roomInfo" class="room-info-bar">
+      <div class="room-info-content">
+        <span class="room-info-label">💬 與</span>
+        <span class="room-info-user">{{ roomInfo.other_user_name }}</span>
+        <span class="room-info-label">洽談商品：</span>
+        <router-link :to="`/items/${roomInfo.item_id}`" class="room-info-item">{{ roomInfo.item_title }}</router-link>
+      </div>
+    </div>
+
     <div v-if="loading" class="status-box">正在載入對話紀錄...</div>
     <div v-else-if="error" class="status-box error">⚠️ {{ error }}</div>
 
@@ -30,8 +40,24 @@ const messages = ref([]);
 const loading = ref(true);
 const error = ref(null);
 const currentUserId = ref(null);
+const roomInfo = ref(null);
 
 let pollingTimer = null;
+
+// 取得聊天室資訊（商品名稱、對方使用者名稱）
+const fetchRoomInfo = async () => {
+  try {
+    const token = localStorage.getItem('token');
+    const res = await fetch(`http://localhost:3000/api/chat/${roomId}/info`, {
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+    if (res.ok) {
+      roomInfo.value = await res.json();
+    }
+  } catch (err) {
+    console.error('取得聊天室資訊失敗', err);
+  }
+};
 
 const goBack = () => {
   router.push('/messages');
@@ -88,7 +114,10 @@ onMounted(() => {
     currentUserId.value = currentUser.id;
   }
 
-  // 2. 首次載入歷史訊息
+  // 2. 取得聊天室資訊（商品名稱與對方名稱）
+  fetchRoomInfo();
+
+  // 3. 首次載入歷史訊息
   fetchMessages(true);
 
   // 3. 開啟輪詢定時器，每 3 秒自動同步一次新訊息
@@ -113,7 +142,46 @@ onUnmounted(() => {
 }
 
 .back-bar {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/* 聊天室頂端商品資訊列 */
+.room-info-bar {
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 0.85rem 1.25rem;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+
+.room-info-content {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  font-size: 0.95rem;
+}
+
+.room-info-label {
+  color: var(--text-light);
+}
+
+.room-info-user {
+  font-weight: 700;
+  color: var(--primary-dark);
+}
+
+.room-info-item {
+  font-weight: 700;
+  color: var(--primary-color);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s;
+}
+
+.room-info-item:hover {
+  color: var(--primary-dark);
 }
 
 .btn-back {

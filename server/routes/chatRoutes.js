@@ -66,6 +66,38 @@ router.post('/', authMiddleware, (req, res) => {
     }
 });
 
+// 3.5 取得特定聊天室的資訊（商品名稱、對方使用者名稱）
+router.get('/:roomId/info', authMiddleware, (req, res) => {
+    const { roomId } = req.params;
+    const userId = req.user.id;
+
+    try {
+        const stmt = db.prepare(`
+            SELECT 
+                cr.id AS room_id,
+                i.id AS item_id,
+                i.title AS item_title,
+                CASE 
+                    WHEN cr.buyer_id = ? THEN o.username 
+                    ELSE b.username 
+                END AS other_user_name
+            FROM chat_rooms cr
+            JOIN items i ON cr.item_id = i.id
+            JOIN users b ON cr.buyer_id = b.id
+            JOIN users o ON cr.owner_id = o.id
+            WHERE cr.id = ?
+        `);
+        const room = stmt.get(userId, roomId);
+        if (!room) {
+            return res.status(404).json({ error: '找不到聊天室' });
+        }
+        res.json(room);
+    } catch (error) {
+        console.error('取得聊天室資訊失敗:', error);
+        res.status(500).json({ error: '取得聊天室資訊失敗' });
+    }
+});
+
 // 3. 取得特定聊天室的歷史訊息
 router.get('/:roomId/messages', authMiddleware, (req, res) => {
     const { roomId } = req.params;
