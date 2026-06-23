@@ -40,14 +40,16 @@ __screenshots__/
 
 # ── 本專案新增 ──────────────────────────────
 
-# SQLite 資料庫檔案（執行時自動產生，不需 commit）
-# server/db/database.sqlite
-# server/db/database.sqlite-shm
-# server/db/database.sqlite-wal
+# SQLite 執行時暫存檔（由 SQLite WAL 模式自動產生，每台電腦不同，不需 commit）
+server/db/database.sqlite-shm
+server/db/database.sqlite-wal
+server/db/*.bak
 
-# 使用者上傳的圖片（上傳到 server/uploads，不 commit 進 repo）
-# server/uploads/
-# !server/uploads/.gitkeep
+# database.sqlite 本體保留追蹤（共同範例資料）
+# server/db/database.sqlite  <-- 此行保持註解，代表不忽略
+
+# 使用者上傳的圖片（保留追蹤，每次上傳後需手動 commit）
+# server/uploads/  <-- 此行保持註解，代表不忽略
 
 # 環境變數（含 JWT_SECRET 等機密）
 .env
