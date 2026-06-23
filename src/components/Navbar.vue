@@ -45,6 +45,7 @@ function handleLogout() {
       <div class="nav-links" :class="{ open: menuOpen }">
         <router-link to="/items">商品列表</router-link>
         <router-link to="/guides">永續指南</router-link>
+        <router-link to="/analytics">數據看板</router-link>
 
         <template v-if="loggedIn">
           <router-link to="/items/new">刊登商品</router-link>

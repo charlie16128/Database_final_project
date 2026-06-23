@@ -14,6 +14,7 @@ const GuideDetailView = () => import('../views/GuideDetailView.vue')
 const GuideEditView  = () => import('../views/GuideEditView.vue')
 const MessagesView   = () => import('../views/MessagesView.vue')
 const ChatRoomView   = () => import('../views/ChatRoomView.vue')
+const AnalyticsView  = () => import('../views/AnalyticsView.vue')
 
 const routes = [
   { path: '/',                  component: HomeView },
@@ -30,6 +31,7 @@ const routes = [
   { path: '/guides/:id/edit',   component: GuideEditView,  meta: { requiresAuth: true } },
   { path: '/messages',          component: MessagesView,   meta: { requiresAuth: true } },
   { path: '/messages/:roomId',  component: ChatRoomView,   meta: { requiresAuth: true } },
+  { path: '/analytics',         component: AnalyticsView },
 ]
 
 const router = createRouter({
