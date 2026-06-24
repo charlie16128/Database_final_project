@@ -41,9 +41,9 @@ __screenshots__/
 # ── 本專案新增 ──────────────────────────────
 
 # SQLite 執行時暫存檔（由 SQLite WAL 模式自動產生，每台電腦不同，不需 commit）
-server/db/database.sqlite-shm
-server/db/database.sqlite-wal
-server/db/*.bak
+# server/db/database.sqlite-shm
+# server/db/database.sqlite-wal
+# server/db/*.bak
 
 # database.sqlite 本體保留追蹤（共同範例資料）
 # server/db/database.sqlite  <-- 此行保持註解，代表不忽略
